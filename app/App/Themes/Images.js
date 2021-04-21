@@ -1,6 +1,8 @@
 const Images = {
   appBackground: require('../Images/background.png'),
   check: require('../Images/check.png'),
+  sol: require('../Images/sol.png'),
+  try: require('../Images/try.png'),
   search: {
     '24px': require('../Images/busca_24px.png')
   },

@@ -18,6 +18,7 @@ import { Images } from '../../../Themes'
 import type { StackNavigationProp } from '@react-navigation/stack'
 
 import moment from 'moment'
+import EmptyList from '../Components/EmptyList'
 
 type Props = {
   navigation: StackNavigationProp
@@ -54,7 +55,7 @@ const ToDoScreen = ({ navigation }: Props) => {
           onPressFilter={setFilterIndex}
           fetching={fetching}
         />
-        {!fetching && !error && !!sortedToDos ? (
+        {!fetching && !error && !sortedToDos ? ( //deve ser !!sortedToDos
           <FlatList
             style={{ marginLeft: 12 }}
             data={sortedToDos}
@@ -68,7 +69,7 @@ const ToDoScreen = ({ navigation }: Props) => {
           <Loading/>
         </> : error ? 
           <Error/>
-        : <></>
+        : <EmptyList/>
         }
       </View>
       <FloatingButton onPress={() => {}} />

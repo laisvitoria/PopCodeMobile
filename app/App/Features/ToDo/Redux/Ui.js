@@ -24,7 +24,7 @@ const toDoUiSlice = createSlice({
     error: (state: State, action: PayloadAction<Error>) => ({
       ...state,
       fetching: false,
-      error: action.payload
+      error: null//alterar para action.payload
     }),
     success: (state: State) => ({
       ...state,
