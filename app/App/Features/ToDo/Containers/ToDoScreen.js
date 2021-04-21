@@ -49,13 +49,26 @@ const ToDoScreen = ({ navigation }: Props) => {
     <ImageBackground source={Images.appBackground} style={styles.background}>
       <HeaderContainer onPressSearch={() => {}} />
       <View style={styles.tasksContainer}>
-        <FilterListContainer
-          filterList={filterList}
-          selectedFilter={selectedFilterIndex}
-          onPressFilter={setFilterIndex}
-          fetching={fetching}
-        />
-        {!fetching && !error && !!sortedToDos ? (
+        {fetching ?
+        <>
+          <FilterListContainer
+            filterList={filterList}
+            selectedFilter={selectedFilterIndex}
+            onPressFilter={setFilterIndex}
+            fetching={fetching}
+          />
+          <Loading/>
+          </>
+        : error ? 
+          <Error/>
+        : !fetching && !error && !sortedToDos ? ( //antes estava !!sortedToDos
+          <>
+          <FilterListContainer
+            filterList={filterList}
+            selectedFilter={selectedFilterIndex}
+            onPressFilter={setFilterIndex}
+            fetching={fetching}
+          />
           <FlatList
             style={{ marginLeft: 12 }}
             data={sortedToDos}
@@ -64,11 +77,8 @@ const ToDoScreen = ({ navigation }: Props) => {
               <ToDo onPressText={() => {}} toggleToDo={() => {}} text={item.title} toggled={item.isDone} />
             )}
           />
-        ): fetching ?
-        <>
-          <Loading/>
-        </> : error ? 
-          <Error/>
+          </>
+        )
         : <EmptyList/>
         }
       </View>
