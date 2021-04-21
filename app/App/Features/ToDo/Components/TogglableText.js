@@ -10,10 +10,14 @@ type Props = {
   toggled: boolean
 }
 
-const TogglableText = ({ text, onPressText, toggled }: Props) => {
+const TogglableText = ({ text, onPressText, toggled, fetching }: Props) => {
   return (
     <TouchableOpacity
-      style={[styles.container, { backgroundColor: toggled ? Colors.a120 : Colors.a420 }]}
+      style={[styles.container, {
+        backgroundColor: toggled ? Colors.a120 : fetching && !toggled ? Colors.c600 : Colors.a420,
+        height: fetching===true ? 7 : 'auto',
+        marginRight: fetching ? 7 : 'auto',
+      }]}
       onPress={onPressText}
       disabled={toggled}
     >

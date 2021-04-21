@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import ToDo from '../Components/ToDo'
 import TogglableText from '../Components/TogglableText'
+import Loading from '../Components/Loading'
 
 import { actions as ToDosUIActions } from '../Redux/Ui'
 import ToDoEntitySelectors from '../Selectors/Entity'
@@ -50,8 +51,9 @@ const ToDoScreen = ({ navigation }: Props) => {
           filterList={filterList}
           selectedFilter={selectedFilterIndex}
           onPressFilter={setFilterIndex}
+          fetching={fetching}
         />
-        {!fetching && !error && !!sortedToDos && (
+        {!fetching && !error && !!sortedToDos ? (
           <FlatList
             style={{ marginLeft: 12 }}
             data={sortedToDos}
@@ -60,7 +62,11 @@ const ToDoScreen = ({ navigation }: Props) => {
               <ToDo onPressText={() => {}} toggleToDo={() => {}} text={item.title} toggled={item.isDone} />
             )}
           />
-        )}
+        ): fetching ?
+        <>
+          <Loading/>
+        </> : <></>
+        }
       </View>
       <FloatingButton onPress={() => {}} />
     </ImageBackground>
@@ -73,7 +79,7 @@ const FloatingButton = ({ onPress }) => (
   </TouchableOpacity>
 )
 
-const FilterListContainer = ({ filterList, selectedFilter, onPressFilter }) => (
+const FilterListContainer = ({ filterList, selectedFilter, onPressFilter, fetching }) => (
   <View style={styles.filterContainer}>
     <FlatList
       bounces={false}
@@ -83,7 +89,7 @@ const FilterListContainer = ({ filterList, selectedFilter, onPressFilter }) => (
       data={filterList}
       keyExtractor={(item, index) => `${index}-${item}`}
       renderItem={({ item, index }) => (
-        <TogglableText toggled={selectedFilter === index} text={item} onPressText={() => onPressFilter(index)} />
+        <TogglableText fetching={fetching} toggled={selectedFilter === index} text={item} onPressText={() => onPressFilter(index)} />
       )}
     />
   </View>
