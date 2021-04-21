@@ -24,13 +24,16 @@ const styles = StyleSheet.create({
   },
   containerButtonTry:{
     flexDirection: 'row',
-    marginTop: 20
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   try:{
     color: Colors.a220,
     fontSize: 16,
     fontStyle: 'normal',
-    lineHeight: 19
+    lineHeight: 19,
+    marginLeft: 5
   }
 })
 

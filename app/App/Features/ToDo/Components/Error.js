@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styles from './Error.style'
+import { Images } from '../../../Themes'
 
 export default function Error(){
 
@@ -10,7 +11,7 @@ export default function Error(){
             <Text style={styles.opa}>Opa!</Text>
             <Text style={styles.message}>Tivemos um problema {`\n`} ao carregar seus lembretes</Text>
             <TouchableOpacity style={styles.containerButtonTry}>
-
+                <Image style={styles.image} source={Images.try} />
                 <Text style={styles.try}>Tentar novamente</Text>
             </TouchableOpacity>
         </View>

@@ -55,7 +55,7 @@ const ToDoScreen = ({ navigation }: Props) => {
           onPressFilter={setFilterIndex}
           fetching={fetching}
         />
-        {!fetching && !error && !sortedToDos ? ( //deve ser !!sortedToDos
+        {!fetching && !error && !!sortedToDos ? (
           <FlatList
             style={{ marginLeft: 12 }}
             data={sortedToDos}
