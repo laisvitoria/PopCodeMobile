@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ToDo from '../Components/ToDo'
 import TogglableText from '../Components/TogglableText'
 import Loading from '../Components/Loading'
+import Error from '../Components/Error'
 
 import { actions as ToDosUIActions } from '../Redux/Ui'
 import ToDoEntitySelectors from '../Selectors/Entity'
@@ -65,7 +66,9 @@ const ToDoScreen = ({ navigation }: Props) => {
         ): fetching ?
         <>
           <Loading/>
-        </> : <></>
+        </> : error ? 
+          <Error/>
+        : <></>
         }
       </View>
       <FloatingButton onPress={() => {}} />
