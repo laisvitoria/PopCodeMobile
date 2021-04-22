@@ -31,6 +31,7 @@ const ToDoScreen = ({ navigation }: Props) => {
 
   // State
   const [selectedFilterIndex, setFilterIndex] = useState(0)
+  const [FilteredTodos, setFilteredTodos] = useState(sortedToDos)
 
   // Selectors
   const sortedToDos = useSelector(ToDoEntitySelectors.sortedToDos)
@@ -43,7 +44,23 @@ const ToDoScreen = ({ navigation }: Props) => {
   }, [])
 
   useEffect(() => {
-    console.log(selectedFilterIndex)
+    let filteredToDos
+    if(selectedFilterIndex===1){
+      filteredToDos = sortedToDos.filter(item => {
+        return item.reminder !== undefined && moment(item.reminder).format('L') === moment().format('L')
+      })
+    }else if(selectedFilterIndex===2){
+      filteredToDos = sortedToDos.filter(item => {
+        return item.reminder !== undefined && moment(item.reminder).format('WW YY') === moment().format('WW YY')
+      })
+    }else if(selectedFilterIndex===3){
+      filteredToDos = sortedToDos.filter(item => {
+        return item.reminder !== undefined && moment(item.reminder).format('MM YY') === moment().format('MM YY')
+      })
+    }else{
+      filteredToDos = sortedToDos
+    }
+    setFilteredTodos(filteredToDos)
   }, [selectedFilterIndex])
 
   // Consts
@@ -75,7 +92,7 @@ const ToDoScreen = ({ navigation }: Props) => {
           />
           <FlatList
             style={{ marginLeft: 12 }}
-            data={sortedToDos}
+            data={FilteredTodos}
             keyExtractor={(item, index) => `${item.id}-${index}-${item.title}`}
             renderItem={({ item }) => (
               <ToDo onPressText={() => {}} toggleToDo={() => {}} text={item.title} toggled={item.isDone} />
