@@ -10,6 +10,7 @@ export function * getToDos (api: Api, action: PayloadAction): * {
   const response = yield call(api.getToDos, action.payload)
   if (!response.ok) {
     yield put(ToDosUIActions.error('Erro'))
+    console.log(response)
     return
   }
 
@@ -18,5 +19,6 @@ export function * getToDos (api: Api, action: PayloadAction): * {
     yield put(ToDosEntityActions.addToDos(response.data))
   } catch (e) {
     yield put(ToDosUIActions.error('Erro'))
+    console.log(e)
   }
 }

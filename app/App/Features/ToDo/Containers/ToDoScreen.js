@@ -42,6 +42,10 @@ const ToDoScreen = ({ navigation }: Props) => {
     getToDos()
   }, [])
 
+  useEffect(() => {
+    console.log(selectedFilterIndex)
+  }, [selectedFilterIndex])
+
   // Consts
   const filterList = ['All', 'Today', 'This week', 'This month']
 
@@ -61,7 +65,7 @@ const ToDoScreen = ({ navigation }: Props) => {
           </>
         : error ? 
           <Error/>
-        : !fetching && !error && !sortedToDos ? ( //antes estava !!sortedToDos
+        : !fetching && !error && !!sortedToDos ? (
           <>
           <FilterListContainer
             filterList={filterList}
