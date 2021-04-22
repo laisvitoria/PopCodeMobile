@@ -85,15 +85,16 @@ Vale lembrar que **não é obrigatório finalizar todas as tarefas listadas** aq
 -->
 
 1. Início
-	1. [Cenário de carregamento](https://invis.io/52U0WK0TNF8#/384998463)
-	2. Cenário de [erro/falha](https://invis.io/52U0WK0TNF8#/384998464) (de requisição à API, por exemplo)
-	3. Cenário para [lista vazia](https://invis.io/52U0WK0TNF8#/384998465)
+	1. [Cenário de carregamento](https://invis.io/52U0WK0TNF8#/384998463)✅
+	2. Cenário de [erro/falha](https://invis.io/52U0WK0TNF8#/384998464) (de requisição à API, por exemplo)✅
+	3. Cenário para [lista vazia](https://invis.io/52U0WK0TNF8#/384998465)✅
 	4. Exibir [lista de tarefas](https://invis.io/52U0WK0TNF8#/384998452) ✅
 2. Filtros
-	1. Todos
-	2. Hoje
-	3. Esta semana
+	1. Todos ✅
+	2. Hoje ✅
+	3. Esta semana ✅
 	4. Atrasado
+	5. Este Mês ✅
 3. Finalizar Tarefa
 	1. [Marcar tarefa como finalizada](https://www.figma.com/proto/F95kJDtNqV2b2ioeS3YqTp/Pop-To-Do_Android?scaling=min-zoom&node-id=1%3A228)
 	2. [Desmarcar tarefa como finalizada](https://www.figma.com/proto/F95kJDtNqV2b2ioeS3YqTp/Pop-To-Do_Android?scaling=min-zoom&node-id=20%3A0)
